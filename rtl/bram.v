@@ -1,19 +1,19 @@
-module bram  #(parameter addr_width = 3
-               parameter data_width =32 )
+module bram  #(parameter ADDR_WIDTH = 3,
+               parameter DATA_WIDTH =32 )
     (input clk,rst,
     
     input we_a,
-    input [addr_width-1:0]addr_a,
-    input signed [data_width-1:0]din_a,
-    output reg signed [data_width-1:0]dout_a,
+    input [ADDR_WIDTH-1:0]addr_a,
+    input signed [DATA_WIDTH-1:0]din_a,
+    output reg signed [DATA_WIDTH-1:0]dout_a,
     
     input we_b,
-    input [addr_width-1:0]addr_b,
-    input signed [data_width-1:0]din_b,
-    output reg signed [data_width-1:0]dout_b
+    input [ADDR_WIDTH-1:0]addr_b,
+    input signed [DATA_WIDTH-1:0]din_b,
+    output reg signed [DATA_WIDTH-1:0]dout_b
     );
 
-reg [data_width-1:0]mem[0:addr_width-1];
+reg [DATA_WIDTH-1:0]mem[0:ADDR_WIDTH-1];
 
 
 always@(posedge clk)begin
