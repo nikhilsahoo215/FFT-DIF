@@ -22,8 +22,9 @@ reg [3:0] group_size;
 reg [1:0] stage;
 reg [1:0] status;
 reg [1:0] d;
+reg [1:0] count;
 wire done;
-wire rcvd;
+// wire rcvd;
 reg FFT_done;
 
 always@(*)begin
@@ -55,16 +56,21 @@ always@(posedge clk)begin
         FFT_done <= 0;
         bf_index <= 0;
         stage <= 0;
+        count <= 0;
     end
     else begin
         case(status)
         READ: begin
             we_a <= 0;
             we_b <= 0;
-            status <= 2'b01;
+            status <= COMPUTE;
         end
         COMPUTE: begin
-                status <= 2'b10;
+            count <= count+1;
+            if(count == 2)begin
+                status <= WRITE;
+                count <= 0;
+            end
         end
         WRITE:begin
             if(done)begin
@@ -78,7 +84,7 @@ always@(posedge clk)begin
                     else stage <= stage + 1;
                 end
                 else bf_index <= bf_index + 1;
-                status <= 2'b00;
+                status <= READ;
             end
             else begin
                 we_a <= 0;
@@ -104,7 +110,7 @@ wire signed [15:0] Dimag_a;
 wire signed [15:0] Dreal_b;
 wire signed [15:0] Dimag_b;
 
-butterfly fly(clk,rst,real_a,imag_a,real_b,imag_b,Dreal_a,Dimag_a,Dreal_b,Dimag_b,done);
+butterfly fly(clk,rst,status,bf_index,stage,distance,real_a,imag_a,real_b,imag_b,Dreal_a,Dimag_a,Dreal_b,Dimag_b,done);
 
 
 

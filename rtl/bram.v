@@ -13,7 +13,7 @@ module bram  #(parameter ADDR_WIDTH = 3,
     output reg signed [DATA_WIDTH-1:0]dout_b
     );
 
-reg [DATA_WIDTH-1:0]mem[0:ADDR_WIDTH-1];
+reg [DATA_WIDTH-1:0]mem[0:(1<<ADDR_WIDTH)-1];
 
 
 always@(posedge clk)begin

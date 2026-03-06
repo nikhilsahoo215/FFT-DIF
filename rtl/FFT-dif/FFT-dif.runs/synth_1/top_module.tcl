@@ -57,6 +57,7 @@ if {$::dispatch::connected} {
 
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param general.usePosixSpawnForFork 1
+set_param chipscope.maxJobs 3
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
 
@@ -76,6 +77,7 @@ read_verilog -library xil_defaultlib {
   C:/Users/nikhi/FFT/rtl/top_module.v
   C:/Users/nikhi/FFT/rtl/butterfly.v
   C:/Users/nikhi/FFT/rtl/bram.v
+  C:/Users/nikhi/FFT/rtl/twiddle_rom.v
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -86,7 +88,12 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
+read_xdc C:/Users/nikhi/FFT/rtl/FFT-dif/FFT-dif.srcs/constrs_1/new/create_clk.xdc
+set_property used_in_implementation false [get_files C:/Users/nikhi/FFT/rtl/FFT-dif/FFT-dif.srcs/constrs_1/new/create_clk.xdc]
+
 set_param ips.enableIPCacheLiteLoad 1
+
+read_checkpoint -auto_incremental -incremental C:/Users/nikhi/FFT/rtl/FFT-dif/FFT-dif.srcs/utils_1/imports/synth_1/top_module.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

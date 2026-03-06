@@ -3,3 +3,285 @@
     with args -log top_module.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source top_module.tcl
 
 
+
+****** Vivado v2025.2 (64-bit)
+  **** SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+  **** IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+  **** SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+  **** Start of session at: Fri Mar  6 20:58:39 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source top_module.tcl -notrace
+create_project: Time (s): cpu = 00:00:19 ; elapsed = 00:00:12 . Memory (MB): peak = 575.914 ; gain = 255.824
+Command: read_checkpoint -auto_incremental -incremental C:/Users/nikhi/FFT/rtl/FFT-dif/FFT-dif.srcs/utils_1/imports/synth_1/top_module.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/nikhi/FFT/rtl/FFT-dif/FFT-dif.srcs/utils_1/imports/synth_1/top_module.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top top_module -part xc7a35tcpg236-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 4496
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1309.484 ; gain = 541.773
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-11065] parameter 'READ' becomes localparam in 'top_module' with formal parameter declaration list [C:/Users/nikhi/FFT/rtl/top_module.v:8]
+WARNING: [Synth 8-11065] parameter 'COMPUTE' becomes localparam in 'top_module' with formal parameter declaration list [C:/Users/nikhi/FFT/rtl/top_module.v:9]
+WARNING: [Synth 8-11065] parameter 'WRITE' becomes localparam in 'top_module' with formal parameter declaration list [C:/Users/nikhi/FFT/rtl/top_module.v:10]
+WARNING: [Synth 8-6901] identifier 'Dreal_a' is used before its declaration [C:/Users/nikhi/FFT/rtl/top_module.v:79]
+WARNING: [Synth 8-6901] identifier 'Dimag_a' is used before its declaration [C:/Users/nikhi/FFT/rtl/top_module.v:79]
+WARNING: [Synth 8-6901] identifier 'Dreal_b' is used before its declaration [C:/Users/nikhi/FFT/rtl/top_module.v:80]
+WARNING: [Synth 8-6901] identifier 'Dimag_b' is used before its declaration [C:/Users/nikhi/FFT/rtl/top_module.v:80]
+WARNING: [Synth 8-11065] parameter 'WRITE' becomes localparam in 'butterfly' with formal parameter declaration list [C:/Users/nikhi/FFT/rtl/butterfly.v:18]
+INFO: [Synth 8-6157] synthesizing module 'top_module' [C:/Users/nikhi/FFT/rtl/top_module.v:1]
+INFO: [Synth 8-6157] synthesizing module 'bram' [C:/Users/nikhi/FFT/rtl/bram.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'bram' (0#1) [C:/Users/nikhi/FFT/rtl/bram.v:1]
+INFO: [Synth 8-6157] synthesizing module 'butterfly' [C:/Users/nikhi/FFT/rtl/butterfly.v:1]
+INFO: [Synth 8-6157] synthesizing module 'twiddle_rom' [C:/Users/nikhi/FFT/rtl/twiddle_rom.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'twiddle_rom' (0#1) [C:/Users/nikhi/FFT/rtl/twiddle_rom.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'butterfly' (0#1) [C:/Users/nikhi/FFT/rtl/butterfly.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'top_module' (0#1) [C:/Users/nikhi/FFT/rtl/top_module.v:1]
+WARNING: [Synth 8-4767] Trying to implement RAM 'mem_reg' in registers. Block RAM or DRAM implementation is not possible; see log for reasons. [C:/Users/nikhi/FFT/rtl/bram.v:28]
+Reason is one or more of the following :
+	1: RAM has multiple writes via different ports in same process. If RAM inferencing intended, write to one port per process. 
+	2: Invalid write to RAM. 
+	3: Invalid write to RAM. 
+	4: No valid clock found for write to RAM. 
+WARNING: [Synth 8-6014] Unused sequential element FFT_done_reg was removed.  [C:/Users/nikhi/FFT/rtl/top_module.v:56]
+WARNING: [Synth 8-3936] Found unconnected internal register 'group_size_reg' and it is trimmed from '4' to '3' bits. [C:/Users/nikhi/FFT/rtl/top_module.v:33]
+WARNING: [Synth 8-7129] Port distance[2] in module butterfly is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rst in module bram is either unconnected or has no load
+WARNING: [Synth 8-7129] Port add in module top_module is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 1429.590 ; gain = 661.879
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 1429.590 ; gain = 661.879
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 1429.590 ; gain = 661.879
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.024 . Memory (MB): peak = 1429.590 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/Users/nikhi/FFT/rtl/FFT-dif/FFT-dif.srcs/constrs_1/new/create_clk.xdc]
+Finished Parsing XDC File [C:/Users/nikhi/FFT/rtl/FFT-dif/FFT-dif.srcs/constrs_1/new/create_clk.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1494.719 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.019 . Memory (MB): peak = 1494.719 ; gain = 0.000
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 1494.719 ; gain = 727.008
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tcpg236-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 1494.719 ; gain = 727.008
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 1494.719 ; gain = 727.008
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1494.719 ; gain = 727.008
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   17 Bit       Adders := 2     
+	   3 Input   16 Bit       Adders := 2     
+	   2 Input    3 Bit       Adders := 3     
+	   2 Input    2 Bit       Adders := 7     
++---Registers : 
+	               32 Bit    Registers := 12    
+	               16 Bit    Registers := 4     
+	                3 Bit    Registers := 2     
+	                2 Bit    Registers := 4     
+	                1 Bit    Registers := 2     
++---Multipliers : 
+	                3x3  Multipliers := 1     
++---Muxes : 
+	   2 Input  256 Bit        Muxes := 1     
+	   2 Input   32 Bit        Muxes := 17    
+	   4 Input   16 Bit        Muxes := 2     
+	   2 Input    2 Bit        Muxes := 2     
+	   4 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 5     
+	   4 Input    1 Bit        Muxes := 6     
+	   5 Input    1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+DSP Report: Generating DSP fly/mult3, operation Mode is: A*B.
+DSP Report: operator fly/mult3 is absorbed into DSP fly/mult3.
+DSP Report: Generating DSP fly/Dimag_b1, operation Mode is: C+A*B.
+DSP Report: operator fly/Dimag_b1 is absorbed into DSP fly/Dimag_b1.
+DSP Report: operator fly/mult4 is absorbed into DSP fly/Dimag_b1.
+DSP Report: Generating DSP fly/mult1, operation Mode is: A*B.
+DSP Report: operator fly/mult1 is absorbed into DSP fly/mult1.
+DSP Report: Generating DSP fly/Dreal_b1, operation Mode is: C-A*B.
+DSP Report: operator fly/Dreal_b1 is absorbed into DSP fly/Dreal_b1.
+DSP Report: operator fly/mult2 is absorbed into DSP fly/Dreal_b1.
+WARNING: [Synth 8-7129] Port rst in module bram is either unconnected or has no load
+WARNING: [Synth 8-7129] Port add in module top_module is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:30 ; elapsed = 00:00:32 . Memory (MB): peak = 1494.719 ; gain = 727.008
+---------------------------------------------------------------------------------
+ Sort Area is  fly/Dreal_b1_5 : 0 0 : 2152 2152 : Used 1 time 0
+ Sort Area is  fly/Dimag_b1_2 : 0 0 : 2029 2029 : Used 1 time 0
+ Sort Area is  fly/mult1_4 : 0 0 : 1937 1937 : Used 1 time 0
+ Sort Area is  fly/mult3_0 : 0 0 : 1937 1937 : Used 1 time 0
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+DSP: Preliminary Mapping Report (see note below. The ' indicates corresponding REG is set)
++------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name | DSP Mapping | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|butterfly   | A*B         | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|butterfly   | C+A*B       | 16     | 16     | 31     | -      | 31     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|butterfly   | A*B         | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|butterfly   | C-A*B       | 16     | 16     | 31     | -      | 31     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
++------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:44 ; elapsed = 00:00:46 . Memory (MB): peak = 1611.531 ; gain = 843.820
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:44 ; elapsed = 00:00:46 . Memory (MB): peak = 1611.531 ; gain = 843.820
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:44 ; elapsed = 00:00:46 . Memory (MB): peak = 1621.086 ; gain = 853.375
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:54 ; elapsed = 00:00:57 . Memory (MB): peak = 1870.426 ; gain = 1102.715
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:54 ; elapsed = 00:00:57 . Memory (MB): peak = 1870.426 ; gain = 1102.715
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:54 ; elapsed = 00:00:57 . Memory (MB): peak = 1870.426 ; gain = 1102.715
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:54 ; elapsed = 00:00:57 . Memory (MB): peak = 1870.426 ; gain = 1102.715
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:54 ; elapsed = 00:00:57 . Memory (MB): peak = 1870.426 ; gain = 1102.715
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:54 ; elapsed = 00:00:57 . Memory (MB): peak = 1870.426 ; gain = 1102.715
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++-+-----+------+
+| |Cell |Count |
++-+-----+------+
++-+-----+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:54 ; elapsed = 00:00:57 . Memory (MB): peak = 1870.426 ; gain = 1102.715
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 2 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:41 ; elapsed = 00:00:55 . Memory (MB): peak = 1870.426 ; gain = 1037.586
+Synthesis Optimization Complete : Time (s): cpu = 00:00:55 ; elapsed = 00:00:58 . Memory (MB): peak = 1870.426 ; gain = 1102.715
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1870.426 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1883.270 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: 63dbf34c
+INFO: [Common 17-83] Releasing license: Synthesis
+26 Infos, 16 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:01 ; elapsed = 00:01:08 . Memory (MB): peak = 1883.270 ; gain = 1300.848
+INFO: [Common 17-1381] The checkpoint 'C:/Users/nikhi/FFT/rtl/FFT-dif/FFT-dif.runs/synth_1/top_module.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file top_module_utilization_synth.rpt -pb top_module_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Fri Mar  6 21:00:04 2026...
