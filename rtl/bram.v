@@ -13,7 +13,20 @@ module bram  #(parameter ADDR_WIDTH = 3,
     output reg signed [DATA_WIDTH-1:0]dout_b
     );
 
-reg [DATA_WIDTH-1:0]mem[0:(1<<ADDR_WIDTH)-1];
+reg signed [DATA_WIDTH-1:0]mem[0:(1<<ADDR_WIDTH)-1];
+
+initial begin
+
+mem[0] = 32'h1000_0000;
+mem[1] = 32'h2000_0000;
+mem[2] = 32'h3000_0000;
+mem[3] = 32'h4000_0000;
+mem[4] = 32'h4000_0000;
+mem[5] = 32'h3000_0000;
+mem[6] = 32'h2000_0000;
+mem[7] = 32'h1000_0000;
+
+end
 
 
 always@(posedge clk)begin

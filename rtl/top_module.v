@@ -1,8 +1,10 @@
-module top_module #(parameter ADDR_WIDTH = 3,
+module top_module #(parameter ADDR_WIDTH = 4,
                     parameter DATA_WIDTH = 32,
                     parameter N = 8)(
     input clk,rst,
-    input add 
+    output reg signed [DATA_WIDTH-1:0]din_a,
+    output reg signed [DATA_WIDTH-1:0]din_b,
+    output done 
     );
 
 parameter READ = 2'b00,
@@ -10,7 +12,7 @@ parameter READ = 2'b00,
           WRITE = 2'b10;
 
 reg  [ADDR_WIDTH-1:0] addr_a, addr_b;
-reg  [DATA_WIDTH-1:0] din_a, din_b;
+//reg  [DATA_WIDTH-1:0] din_a, din_b;
 wire [DATA_WIDTH-1:0] dout_a, dout_b;
 reg we_a,we_b;
 
@@ -23,9 +25,15 @@ reg [1:0] stage;
 reg [1:0] status;
 reg [1:0] d;
 reg [1:0] count;
-wire done;
 // wire rcvd;
 reg FFT_done;
+
+wire signed [15:0] Dreal_a;
+wire signed [15:0] Dimag_a;
+
+wire signed [15:0] Dreal_b;
+wire signed [15:0] Dimag_b;
+
 
 always@(*)begin
     distance = (N >> (stage+1));
@@ -96,7 +104,21 @@ always@(posedge clk)begin
     end
 end
 
-bram ram_read(clk, rst, we_a, addr_a, din_a, dout_a, we_b, addr_b, din_b, dout_b);
+blk_mem_gen_0 input_bram (
+    .clka(clk),
+    .ena(1'b1),
+    .wea(we_a),
+    .addra(addr_a),
+    .dina(din_a),
+    .douta(dout_a),
+
+    .clkb(clk),
+    .enb(1'b1),
+    .web(we_b),
+    .addrb(addr_b),
+    .dinb(din_b),
+    .doutb(dout_b)
+);
 
 wire signed [15:0] real_a = dout_a[31:16];
 wire signed [15:0] imag_a = dout_a[15:0];
@@ -104,11 +126,7 @@ wire signed [15:0] imag_a = dout_a[15:0];
 wire signed [15:0] real_b = dout_b[31:16];
 wire signed [15:0] imag_b = dout_b[15:0];
 
-wire signed [15:0] Dreal_a;
-wire signed [15:0] Dimag_a;
 
-wire signed [15:0] Dreal_b;
-wire signed [15:0] Dimag_b;
 
 butterfly fly(clk,rst,status,bf_index,stage,distance,real_a,imag_a,real_b,imag_b,Dreal_a,Dimag_a,Dreal_b,Dimag_b,done);
 

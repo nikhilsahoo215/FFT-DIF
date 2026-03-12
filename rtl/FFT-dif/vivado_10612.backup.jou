@@ -1,0 +1,160 @@
+#-----------------------------------------------------------
+# Vivado v2025.2 (64-bit)
+# SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+# IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+# SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+# Start of session at: Thu Mar 12 21:39:20 2026
+# Process ID         : 10612
+# Current directory  : C:/Users/nikhi/FFT/rtl/FFT-dif
+# Command line       : vivado.exe -gui_launcher_event rodinguilauncherevent20620 C:\Users\nikhi\FFT\rtl\FFT-dif\FFT-dif.xpr
+# Log file           : C:/Users/nikhi/FFT/rtl/FFT-dif/vivado.log
+# Journal file       : C:/Users/nikhi/FFT/rtl/FFT-dif\vivado.jou
+# Running On         : Libu
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : 13th Gen Intel(R) Core(TM) i5-13420H
+# CPU Frequency      : 2611 MHz
+# CPU Physical cores : 8
+# CPU Logical cores  : 12
+# Host memory        : 16802 MB
+# Swap memory        : 15032 MB
+# Total Virtual      : 31835 MB
+# Available Virtual  : 16372 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/nikhi/FFT/rtl/FFT-dif/FFT-dif.xpr
+set_property CONFIG.Operating_Mode_B {READ_FIRST} [get_ips blk_mem_gen_0]
+generate_target all [get_files  C:/Users/nikhi/FFT/rtl/FFT-dif/FFT-dif.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci]
+export_ip_user_files -of_objects [get_files C:/Users/nikhi/FFT/rtl/FFT-dif/FFT-dif.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci] -no_script -sync -force -quiet
+export_simulation -lib_map_path [list {modelsim=C:/Users/nikhi/FFT/rtl/FFT-dif/FFT-dif.cache/compile_simlib/modelsim} {questa=C:/Users/nikhi/FFT/rtl/FFT-dif/FFT-dif.cache/compile_simlib/questa} {riviera=C:/Users/nikhi/FFT/rtl/FFT-dif/FFT-dif.cache/compile_simlib/riviera} {activehdl=C:/Users/nikhi/FFT/rtl/FFT-dif/FFT-dif.cache/compile_simlib/activehdl}] -of_objects [get_files C:/Users/nikhi/FFT/rtl/FFT-dif/FFT-dif.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci] -directory C:/Users/nikhi/FFT/rtl/FFT-dif/FFT-dif.ip_user_files/sim_scripts -ip_user_files_dir C:/Users/nikhi/FFT/rtl/FFT-dif/FFT-dif.ip_user_files -ipstatic_source_dir C:/Users/nikhi/FFT/rtl/FFT-dif/FFT-dif.ip_user_files/ipstatic -use_ip_compiled_libs -force -quiet
+set_property CONFIG.Coe_File {C:/Users/nikhi/FFT/rtl/fft_input.coe} [get_ips blk_mem_gen_0]
+generate_target all [get_files  C:/Users/nikhi/FFT/rtl/FFT-dif/FFT-dif.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci]
+export_ip_user_files -of_objects [get_files C:/Users/nikhi/FFT/rtl/FFT-dif/FFT-dif.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci] -no_script -sync -force -quiet
+export_simulation -lib_map_path [list {modelsim=C:/Users/nikhi/FFT/rtl/FFT-dif/FFT-dif.cache/compile_simlib/modelsim} {questa=C:/Users/nikhi/FFT/rtl/FFT-dif/FFT-dif.cache/compile_simlib/questa} {riviera=C:/Users/nikhi/FFT/rtl/FFT-dif/FFT-dif.cache/compile_simlib/riviera} {activehdl=C:/Users/nikhi/FFT/rtl/FFT-dif/FFT-dif.cache/compile_simlib/activehdl}] -of_objects [get_files C:/Users/nikhi/FFT/rtl/FFT-dif/FFT-dif.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci] -directory C:/Users/nikhi/FFT/rtl/FFT-dif/FFT-dif.ip_user_files/sim_scripts -ip_user_files_dir C:/Users/nikhi/FFT/rtl/FFT-dif/FFT-dif.ip_user_files -ipstatic_source_dir C:/Users/nikhi/FFT/rtl/FFT-dif/FFT-dif.ip_user_files/ipstatic -use_ip_compiled_libs -force -quiet
+reset_run synth_1
+launch_runs synth_1 -jobs 12
+wait_on_run synth_1
+launch_runs impl_1 -jobs 12
+wait_on_run impl_1
+reset_run synth_1
+launch_runs synth_1 -jobs 12
+wait_on_run synth_1
+launch_runs impl_1 -jobs 12
+wait_on_run impl_1
+open_run impl_1
+file mkdir C:/Users/nikhi/FFT/rtl/FFT-dif/FFT-dif.srcs/sources_1/new
+close [ open C:/Users/nikhi/FFT/rtl/FFT-dif/FFT-dif.srcs/sources_1/new/tb.v w ]
+add_files C:/Users/nikhi/FFT/rtl/FFT-dif/FFT-dif.srcs/sources_1/new/tb.v
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top tb [current_fileset]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode DisplayOnly [current_project]
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode DisplayOnly [current_project]
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top top_module [current_fileset]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode DisplayOnly [current_project]
+launch_simulation
+launch_simulation
+source tb.tcl
+current_wave_config {Untitled 1}
+add_wave {{/tb/uut/addr_a}} 
+current_wave_config {Untitled 1}
+add_wave {{/tb/uut/addr_b}} 
+current_wave_config {Untitled 1}
+add_wave {{/tb/uut/dout_a}} 
+current_wave_config {Untitled 1}
+add_wave {{/tb/uut/dout_b}} 
+run all
+current_wave_config {Untitled 1}
+add_wave {{/tb/uut/input_bram/inst/native_mem_module.blk_mem_gen_v8_4_12_inst/ENA}} 
+relaunch_sim
+run 10 us
+run 10 us
+run 10 us
+close_sim
+launch_simulation
+launch_simulation
+source tb.tcl
+current_wave_config {Untitled 2}
+add_wave {{/tb/uut/addr_a}} 
+current_wave_config {Untitled 2}
+add_wave {{/tb/uut/addr_b}} 
+current_wave_config {Untitled 2}
+add_wave {{/tb/uut/dout_a}} 
+current_wave_config {Untitled 2}
+add_wave {{/tb/uut/dout_b}} 
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+close_sim
+launch_simulation
+source tb.tcl
+run 10 us
+current_wave_config {Untitled 3}
+add_wave {{/tb/uut/addr_a}} 
+current_wave_config {Untitled 3}
+add_wave {{/tb/uut/addr_b}} 
+current_wave_config {Untitled 3}
+add_wave {{/tb/uut/din_a}} 
+current_wave_config {Untitled 3}
+add_wave {{/tb/uut/din_b}} 
+current_wave_config {Untitled 3}
+add_wave {{/tb/uut/dout_a}} 
+current_wave_config {Untitled 3}
+add_wave {{/tb/uut/dout_b}} 
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+relaunch_sim
+current_wave_config {Untitled 3}
+add_wave {{/tb/uut/real_a}} 
+current_wave_config {Untitled 3}
+add_wave {{/tb/uut/imag_a}} 
+current_wave_config {Untitled 3}
+add_wave {{/tb/uut/real_b}} 
+current_wave_config {Untitled 3}
+add_wave {{/tb/uut/imag_b}} 
+current_wave_config {Untitled 3}
+add_wave {{/tb/uut/Dreal_a}} 
+current_wave_config {Untitled 3}
+add_wave {{/tb/uut/Dimag_a}} 
+current_wave_config {Untitled 3}
+add_wave {{/tb/uut/Dreal_b}} 
+current_wave_config {Untitled 3}
+add_wave {{/tb/uut/Dimag_b}} 
+relaunch_sim
+current_wave_config {Untitled 3}
+add_wave {{/tb/uut/status}} 
+relaunch_sim
+save_wave_config {C:/Users/nikhi/FFT/rtl/FFT-dif/tb_behav.wcfg}
+add_files -fileset sim_1 -norecurse C:/Users/nikhi/FFT/rtl/FFT-dif/tb_behav.wcfg
+set_property xsim.view C:/Users/nikhi/FFT/rtl/FFT-dif/tb_behav.wcfg [get_filesets sim_1]
+current_wave_config {tb_behav.wcfg}
+add_wave {{/tb/uut/FFT_done}} 
+relaunch_sim
+current_wave_config {tb_behav.wcfg}
+add_wave {{/tb/uut/count}} 
+relaunch_sim
+current_wave_config {tb_behav.wcfg}
+add_wave {{/tb/uut/done}} 
+relaunch_sim
+save_wave_config {C:/Users/nikhi/FFT/rtl/FFT-dif/tb_behav.wcfg}
+reset_run synth_1
+launch_runs synth_1 -jobs 12
+wait_on_run synth_1
+open_run synth_1 -name synth_1
+current_wave_config {tb_behav.wcfg}
+add_wave {{/tb/uut/input_bram/inst/native_mem_module.blk_mem_gen_v8_4_12_inst/reg_a}} 
+close_sim

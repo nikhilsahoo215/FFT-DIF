@@ -3,10 +3,10 @@
 # SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
 # IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
 # SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
-# Start of session at: Fri Mar  6 20:47:21 2026
-# Process ID         : 25368
+# Start of session at: Thu Mar 12 23:02:26 2026
+# Process ID         : 11684
 # Current directory  : C:/Users/nikhi/FFT/rtl/FFT-dif
-# Command line       : vivado.exe -gui_launcher_event rodinguilauncherevent29416 C:\Users\nikhi\FFT\rtl\FFT-dif\FFT-dif.xpr
+# Command line       : vivado.exe -gui_launcher_event rodinguilauncherevent26376 C:\Users\nikhi\FFT\rtl\FFT-dif\FFT-dif.xpr
 # Log file           : C:/Users/nikhi/FFT/rtl/FFT-dif/vivado.log
 # Journal file       : C:/Users/nikhi/FFT/rtl/FFT-dif\vivado.jou
 # Running On         : Libu
@@ -17,9 +17,9 @@
 # CPU Physical cores : 8
 # CPU Logical cores  : 12
 # Host memory        : 16802 MB
-# Swap memory        : 20401 MB
-# Total Virtual      : 37204 MB
-# Available Virtual  : 18803 MB
+# Swap memory        : 15032 MB
+# Total Virtual      : 31835 MB
+# Available Virtual  : 15709 MB
 #-----------------------------------------------------------
 start_gui
 open_project C:/Users/nikhi/FFT/rtl/FFT-dif/FFT-dif.xpr

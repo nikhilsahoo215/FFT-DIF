@@ -57,8 +57,8 @@ always @(posedge clk) begin
         Dreal_a <= sum_real >>> 1;
         Dimag_a <= sum_imag >>> 1;
 
-        Dreal_b <= (mult1 - mult2) >>> 15;
-        Dimag_b <= (mult3 + mult4) >>> 15;
+        Dreal_b <= (mult1 - mult2) >>> 16; // scaling by 2 at each stage
+        Dimag_b <= (mult3 + mult4) >>> 16;
 
         done <= 1'b1;
     end

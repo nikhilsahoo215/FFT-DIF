@@ -3,8 +3,8 @@
 # SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
 # IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
 # SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
-# Start of session at: Fri Mar  6 20:58:39 2026
-# Process ID         : 18028
+# Start of session at: Thu Mar 12 22:44:11 2026
+# Process ID         : 15072
 # Current directory  : C:/Users/nikhi/FFT/rtl/FFT-dif/FFT-dif.runs/synth_1
 # Command line       : vivado.exe -log top_module.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top_module.tcl
 # Log file           : C:/Users/nikhi/FFT/rtl/FFT-dif/FFT-dif.runs/synth_1/top_module.vds
@@ -17,8 +17,8 @@
 # CPU Physical cores : 8
 # CPU Logical cores  : 12
 # Host memory        : 16802 MB
-# Swap memory        : 20401 MB
-# Total Virtual      : 37204 MB
-# Available Virtual  : 16881 MB
+# Swap memory        : 15032 MB
+# Total Virtual      : 31835 MB
+# Available Virtual  : 12687 MB
 #-----------------------------------------------------------
 source top_module.tcl -notrace
