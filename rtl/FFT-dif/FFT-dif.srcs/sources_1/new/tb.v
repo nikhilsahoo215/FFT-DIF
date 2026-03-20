@@ -25,6 +25,7 @@ reg clk;
 reg rst;
 wire signed [31:0] din_a, din_b;
 wire done;
+wire FFT_done;
 wire signed [15:0] Dreal_a = din_a[31:16];
 wire signed [15:0] Dimag_a = din_a[15:0];
 
@@ -37,7 +38,8 @@ top_module uut (
     .rst(rst),
     .din_a(din_a),
     .din_b(din_b),
-    .done(done)
+    .done(done),
+    .FFT_done(FFT_done)
 );
 integer file;
 
@@ -51,17 +53,28 @@ rst = 1;
 rst = 0;
 end 
 
+reg done_d, capture;
+
 always @(posedge clk) begin
-    if(done) begin
+    done_d <= done;
+    
+    if(done && !done_d)
+        capture <= 1;
+    else if(capture) begin
         $fwrite(file,"%d %d %d %d\n",
                 Dreal_a, Dimag_a,
                 Dreal_b, Dimag_b);
+        $fflush(file);
+        capture <= 0;
     end
 end
+reg FFT_done_d;
 
-initial begin
-    #1000
-    $fclose(file);
+always @(posedge clk) begin
+    if(FFT_done) begin
+        $fclose(file);
+        $stop;
+    end
 end
 
 initial begin

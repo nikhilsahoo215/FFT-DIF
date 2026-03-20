@@ -1,7 +1,9 @@
-module butterfly #(parameter DATA_WIDTH = 16)(
+module butterfly #(parameter N = 16,
+                   parameter DATA_WIDTH = 16)(
     input clk, rst,
-    input [1:0] status,bf_index, stage,
-    input [2:0] distance,
+    input [1:0] status,
+    input [$clog2(N)-1:0] distance,stage,
+    input [$clog2(N/2)-1:0] bf_index, 
 
     input signed [DATA_WIDTH-1:0] real_a,
     input signed [DATA_WIDTH-1:0] imag_a,
@@ -15,21 +17,35 @@ module butterfly #(parameter DATA_WIDTH = 16)(
     output reg done
 );
 
-parameter WRITE = 2'b10;
-wire [1:0] offset;
-wire [1:0] tw_addr;
+localparam WRITE = 2'b10;
+wire [$clog2(N/2)-1:0] offset;
+wire [$clog2(N/2)-1:0] tw_addr;
 
 assign offset  = bf_index & (distance - 1);
 assign tw_addr = offset << stage;
 
 wire signed [DATA_WIDTH-1:0] tw_re;
 wire signed [DATA_WIDTH-1:0] tw_im;
+wire signed [2*DATA_WIDTH-1:0] tw_data;
 
-twiddle_rom tw(
-    .tw_addr(tw_addr),
-    .tw_re(tw_re),
-    .tw_im(tw_im)
+reg signed [15:0] real_a_d, imag_a_d;
+reg signed [15:0] real_b_d, imag_b_d;
+
+always @(posedge clk) begin
+    real_a_d <= real_a;
+    imag_a_d <= imag_a;
+    real_b_d <= real_b;
+    imag_b_d <= imag_b;
+end
+
+blk_mem_gen_1 tw_rom (
+    .clka(clk),
+    .addra(tw_addr),
+    .douta(tw_data)
 );
+
+assign tw_re = tw_data[31:16];
+assign tw_im = tw_data[15:0];
 
 wire signed [DATA_WIDTH:0] sum_real;
 wire signed [DATA_WIDTH:0] sum_imag;
@@ -37,10 +53,10 @@ wire signed [DATA_WIDTH:0] sum_imag;
 wire signed [DATA_WIDTH-1:0] diff_real;
 wire signed [DATA_WIDTH-1:0] diff_imag;
 
-assign sum_real  = real_a + real_b;
-assign sum_imag  = imag_a + imag_b;
-assign diff_real = real_a - real_b;
-assign diff_imag = imag_a - imag_b;
+assign sum_real  = real_a_d + real_b_d;
+assign sum_imag  = imag_a_d + imag_b_d;
+assign diff_real = real_a_d - real_b_d;
+assign diff_imag = imag_a_d - imag_b_d;
 
 wire signed [2*DATA_WIDTH-1:0] mult1,mult2,mult3,mult4;
 

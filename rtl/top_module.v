@@ -1,32 +1,33 @@
-module top_module #(parameter ADDR_WIDTH = 4,
-                    parameter DATA_WIDTH = 32,
-                    parameter N = 8)(
+module top_module #(parameter N = 64,
+                    parameter ADDR_WIDTH = $clog2(N)+1,
+                    parameter DATA_WIDTH = 32)(
     input clk,rst,
     output reg signed [DATA_WIDTH-1:0]din_a,
     output reg signed [DATA_WIDTH-1:0]din_b,
-    output done 
+    output done,
+    output reg FFT_done
     );
 
-parameter READ = 2'b00,
+localparam READ = 2'b00,
           COMPUTE = 2'b01,
           WRITE = 2'b10;
 
 reg  [ADDR_WIDTH-1:0] addr_a, addr_b;
-//reg  [DATA_WIDTH-1:0] din_a, din_b;
 wire [DATA_WIDTH-1:0] dout_a, dout_b;
 reg we_a,we_b;
 
-reg [1:0] bf_index;
-reg [2:0] distance;
-reg [1:0] offset;
-reg [1:0] group_number;
-reg [3:0] group_size;
-reg [1:0] stage;
+reg [$clog2(N)-1:0] stage;
+reg [$clog2(N)-1:0] distance;
+reg [$clog2(N):0] group_size;
+
+reg [$clog2(N/2)-1:0] bf_index;
+reg [$clog2(N/2)-1:0] offset;
+reg [$clog2(N/2)-1:0] group_number;
+reg [$clog2(N/2)-1:0] d;
+
 reg [1:0] status;
-reg [1:0] d;
 reg [1:0] count;
-// wire rcvd;
-reg FFT_done;
+
 
 wire signed [15:0] Dreal_a;
 wire signed [15:0] Dimag_a;
@@ -37,7 +38,7 @@ wire signed [15:0] Dimag_b;
 
 always@(*)begin
     distance = (N >> (stage+1));
-    d = 2 - stage;
+    d = ($clog2(N)-1) - stage;
     group_size = 2 * distance;
     group_number = bf_index >> d;
     offset =  bf_index & (distance - 1);    
@@ -60,7 +61,7 @@ end
 
 always@(posedge clk)begin
     if(rst)begin
-        status <= 2'b00;
+        status <= 0;
         FFT_done <= 0;
         bf_index <= 0;
         stage <= 0;
@@ -86,9 +87,9 @@ always@(posedge clk)begin
                 we_b <= 1;
                 din_a <= {Dreal_a,Dimag_a};
                 din_b <= {Dreal_b,Dimag_b};
-                if(bf_index == 3)begin
+                if(bf_index == ((N>>1)-1))begin
                     bf_index <= 0;
-                    if (stage == 2) FFT_done <= 1;
+                    if (stage == $clog2(N)-1) FFT_done <= 1;
                     else stage <= stage + 1;
                 end
                 else bf_index <= bf_index + 1;
@@ -128,7 +129,7 @@ wire signed [15:0] imag_b = dout_b[15:0];
 
 
 
-butterfly fly(clk,rst,status,bf_index,stage,distance,real_a,imag_a,real_b,imag_b,Dreal_a,Dimag_a,Dreal_b,Dimag_b,done);
+butterfly #(N) fly(clk,rst,status,distance,stage,bf_index,real_a,imag_a,real_b,imag_b,Dreal_a,Dimag_a,Dreal_b,Dimag_b,done);
 
 
 

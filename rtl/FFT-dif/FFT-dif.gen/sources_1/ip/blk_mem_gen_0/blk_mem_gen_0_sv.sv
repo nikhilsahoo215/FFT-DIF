@@ -60,7 +60,7 @@ module blk_mem_gen_0_sv (
   (* X_INTERFACE_IGNORE = "true" *)
   input wire [0:0] wea,
   (* X_INTERFACE_IGNORE = "true" *)
-  input wire [3:0] addra,
+  input wire [5:0] addra,
   (* X_INTERFACE_IGNORE = "true" *)
   input wire [31:0] dina,
   (* X_INTERFACE_IGNORE = "true" *)
@@ -72,7 +72,7 @@ module blk_mem_gen_0_sv (
   (* X_INTERFACE_IGNORE = "true" *)
   input wire [0:0] web,
   (* X_INTERFACE_IGNORE = "true" *)
-  input wire [3:0] addrb,
+  input wire [5:0] addrb,
   (* X_INTERFACE_IGNORE = "true" *)
   input wire [31:0] dinb,
   (* X_INTERFACE_IGNORE = "true" *)
