@@ -10,9 +10,9 @@ Modules:
 - bram.v : dual-port memory
 - tb.v : testbench
 
-This project is parameterized and it uses BRAm for data and Twiddle values.
+This project is parameterized and it uses BRAM for data and Twiddle values.
 So, this can perform as N-point FFT-DIF.
-It uses stage scaling to avoid overflow.
+It uses stage-wise scaling to avoid overflow.
 
 Future work:
 - FPGA implementation
